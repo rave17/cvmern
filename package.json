@@ -4,16 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": " nodemon backend/server.js "
+    "test": "jest",
+    "dev": " nodemon backend/server.js ",
+    "pre-test": "eslint backend/*.js --ignore-pattern node_modules/"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.2.0",
+    "eslint": "^7.6.0",
+    "jest": "^26.2.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

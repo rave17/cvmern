@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const ResumeEn = require('../../db/models/ResumeEn.Model');
 
 module.exports = {
@@ -12,6 +11,18 @@ module.exports = {
         } catch (err) {
             console.log(err);
             res.status(400).send(err);
+        }
+    },
+    
+    searchById: async (req, res)=>{
+        const id = req.params._id
+        console.log(id)
+        try{
+            const search = await ResumeEn.findById(req.params.id) ;
+            console.log(search);
+            res.status(200).send(search)
+        } catch(err) {
+            console.log(err);
         }
     },
 
@@ -126,9 +137,9 @@ module.exports = {
         )
     },
 
-    saveSkill: async (req, res) => {
+    saveSkill: async (req, res) => {0
         let body = req.body;
-        ResumeEn.update({ _id: body._id }, {
+        ResumeEn.updateOne({ _id: body._id }, {
             $push: {
                 "skills": {
                     nameSkill: body.nameSkill,
@@ -154,7 +165,7 @@ module.exports = {
         )
     },
 
-    saveMore:  async (req, res) => {
+    saveMore: async (req, res) => {
         let body = req.body;
         ResumeEn.update({ _id: body._id }, {
             $push: {
@@ -181,7 +192,7 @@ module.exports = {
         )
     },
 
-    saveLearning:  async (req, res) => {
+    saveLearning: async (req, res) => {
         let body = req.body;
         ResumeEn.update({ _id: body._id }, {
             $push: {
@@ -209,7 +220,7 @@ module.exports = {
         )
     },
 
-    deleteInfo: async(req, res) => {
+    deleteInfo: async (req, res) => {
         const id = req.params.id;
         console.log(id);
         await ResumeEn.findByIdAndDelete(id, function (err) {
@@ -231,6 +242,5 @@ module.exports = {
             }
         })
     }
-
 
 };

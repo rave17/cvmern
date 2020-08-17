@@ -1,11 +1,23 @@
 const route = require('express').Router();
-const { getInfo, saveInfo, saveCourses, saveSkill, saveExperience, deleteInfo, deleteAll, saveAcademy, saveMore, saveLearning } = require('../controllers/Controller')
+const { getInfo,
+    saveInfo,
+    saveCourses,
+    saveSkill,
+    saveExperience,
+    deleteInfo,
+    deleteAll,
+    saveAcademy,
+    saveMore,
+    saveLearning,
+    searchById } = require('../controllers/Controller')
 
 route.get('/presentation', getInfo);
 
 route.post('/create', saveInfo);
 
 route.post('/addcourse', saveCourses);
+
+route.get('/searchinfo/:id', searchById);
 
 route.post('/addacademystudy', saveAcademy);
 
