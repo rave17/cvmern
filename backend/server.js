@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //routes
-const resume = require('./routes/resume');
+const resume = require('./routes/resume.route');
 
 app.use('/robertovargas/v1/en', resume);
 

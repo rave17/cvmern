@@ -22,6 +22,7 @@ module.exports = {
             console.log(search);
             res.status(200).send(search)
         } catch(err) {
+            res.status(400).send(err)
             console.log(err);
         }
     },
@@ -40,8 +41,8 @@ module.exports = {
             const resumeSaved = await resume.save();
             console.log(resumeSaved);
 
-            res.status(200).send(resumeSaved);
-        } catch (err) {
+            res.status(201).send(resumeSaved);
+        } catch (err) { 
             console.log(err);
             res.status(400).send(err)
         }
@@ -63,7 +64,7 @@ module.exports = {
         },
             function (err) {
                 if (err) {
-                    return res.json({
+                    return res.status(400).send.json({
                         success: false,
                         msj: "error in experience job",
                         err
@@ -85,7 +86,7 @@ module.exports = {
                 "academy": {
                     academy: body.academy,
                     descriptionAcademy: body.descriptionAcademy,
-                    finishedAcademy: body.finishAcademy,
+                    finishedAcademy: body.finishedAcademy,
                     entryAcademy: body.entryAcademy,
                     finishAcademy: body.finishAcademy,
                     skillsAcademy: body.skillsAcademy
@@ -129,6 +130,7 @@ module.exports = {
                     })
                 } else {
                     return res.json({
+                        
                         success: true,
                         msj: "add course"
                     });
@@ -151,12 +153,14 @@ module.exports = {
             function (err) {
                 if (err) {
                     return res.json({
+                        status: 400,
                         success: false,
                         msj: "error in skill",
                         err
                     })
                 } else {
                     return res.json({
+                        status: 201,
                         success: true,
                         msj: "add skill"
                     });
@@ -241,6 +245,7 @@ module.exports = {
                 console.log(`all documents has been deleted`);
             }
         })
+        res.status(204).send("deleted")
     }
 
 };

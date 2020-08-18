@@ -9,7 +9,8 @@ const { getInfo,
     saveAcademy,
     saveMore,
     saveLearning,
-    searchById } = require('../controllers/Controller')
+    searchById } = require('../controllers/Controller');
+    
 
 route.get('/presentation', getInfo);
 
