@@ -64,16 +64,16 @@ module.exports = {
         },
             function (err) {
                 if (err) {
-                    return res.status(400).send.json({
+                    return res.status(400).send(json({
                         success: false,
                         msj: "error in experience job",
                         err
-                    })
+                    }))
                 } else {
-                    return res.json({
+                    return res.status(201).send(json({
                         success: true,
                         msj: "add course"
-                    });
+                    }));
                 }
             }
         )
