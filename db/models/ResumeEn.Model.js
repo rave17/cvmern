@@ -13,7 +13,7 @@ const ResumeEn = new mongoose.Schema({
         {
             jobTitle: { type: String },
             jobPosition : { type: String },
-            jobDescription : { type: String, max: 120},
+            jobDescription : { type: String, max: 300},
             initJob : { type: Date },
             endJob : { type: Date }
         }
